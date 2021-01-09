@@ -1,0 +1,41 @@
+.header {
+  background: #acacac;
+  margin-bottom: 2rem;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    padding: 1rem;
+   
+    .user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+}
+.menu{
+    display: flex;
+    div{
+        margin-right: 10px;
+    }
+    .logout {
+        background: #9f3522;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        cursor: pointer;
+
+    }
+    .Inicio {
+        background: #818181;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        margin-right: 10px;  
+
+    }
+    a{
+        color: white;
+    }
+}

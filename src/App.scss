@@ -1,0 +1,16 @@
+.main{
+    min-height: 100vh;
+
+    a{
+        color:#666666;
+        text-decoration: none;
+
+        :hover{
+            text-decoration: none;
+        }
+    }
+}
+
+.ReactModal__Overlay{
+    background-color: rgba(132, 127, 127, 0.75) !important;
+}
