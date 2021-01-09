@@ -41,11 +41,18 @@ export const AddCategorie = () => {
     dispatch(createCategori(name));
     setIsOpen(false);
   };
+  const {userType } = useSelector((state) => state.auth);
   return (
     <div>
-      <button onClick={openModal} className="new_blog">
+       {userType===1 ?  (
+        <button onClick={openModal} className="new_blog">
         +
       </button>
+      ) : (
+        <div></div>
+      )}
+  
+     
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

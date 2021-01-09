@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import { blogCreate } from "../../actions/blog";
 import { readingCateogries } from "../../actions/categories";
 
@@ -30,7 +31,7 @@ export const Modals = () => {
 
   // console.log( useSelector(state => state.auth))
   const [blogRegister, handlerBlog] = useForm({
-    id_category: "1",
+    id_category: "0",
     name: "prueba blog",
     short_text: "lorem im",
     long_text: "julian9413000@gmail.com",
@@ -58,10 +59,18 @@ export const Modals = () => {
   }
   const handleSend = (e) => {
     e.preventDefault();
-    dispatch(
-      blogCreate(id_category, name, slug, short_text, long_text, image, id_user)
-    );
-    setIsOpen(false);
+    console.log(id_category==0)
+    if(id_category==0){
+      setIsOpen(true);
+      Swal.fire('Error', 'Seleccione una categoria valida')
+    }else{
+      dispatch(
+        blogCreate(id_category, name, slug, short_text, long_text, image, id_user)
+      );
+      setIsOpen(false);
+    }
+    
+    
   };
   return (
     <div>
@@ -86,9 +95,9 @@ export const Modals = () => {
             name="id_category"
             onChange={handlerBlog}
           >
-            <option defaultChecked>
+            <option defaultChecked value="0">
                   Selecciona una opción
-                </option>
+             </option>
             {category.map((e) => {
               return (
                 // console.log(e)

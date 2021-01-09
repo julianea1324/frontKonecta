@@ -31,12 +31,14 @@ export const startLogout = () =>{
   }
 }
 
-export const startRegister = (name,email,password,password_confirmarion,phone,user_type=2) =>{
+export const startRegister = (name,email,password,password_confirmarion,phone,user_type=1) =>{
     return async(dispatch) => {
     const resp = await fetchtoken("auth/register", { name,email,password,password_confirmarion,phone,user_type}, "POST");
     const body = await resp.json();
-    console.log(body);
-    if (body.error === undefined) {
+    console.log(body === '{"email":["The email has already been taken."]}');
+    if(body === '{"email":["The email has already been taken."]}'){
+      Swal.fire('Error', 'El correo ya existe') 
+    }else if (body.error === undefined) {
       Swal.fire('Registro completo', 'Te registraste correctamente!') 
     }else{
         Swal.fire('error', body.error)    
